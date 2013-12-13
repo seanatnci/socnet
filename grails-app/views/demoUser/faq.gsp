@@ -8,7 +8,7 @@
   <head>
     <meta name="layout" content="main" />
     <g:set var="entityName" value="${message(code: 'demoUser.label', default: 'DemoUser')}" />
-    <g:javascript library="hosturl" />
+    <g:javascript src="hosturl.js" />
     <title><g:message code="default.edit.label" args="[entityName]" /></title>
 
   <script type="text/JavaScript">

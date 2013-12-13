@@ -8,7 +8,7 @@ import org.codehaus.groovy.grails.commons.ConfigurationHolder
 
 
 class UserController {
-    def mailService
+    def emailerService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST",compare: "POST",collaborate: "collaborate",confirm: "GET"]
 
@@ -74,18 +74,18 @@ class UserController {
             //send confirmation email
             def sendTo = "${userInstance.email}"
             def message =  "Hi ${userInstance.name}, \n Your API-Key is ${userInstance.apiKey} \n follow the link to confirm your registration \n ${ConfigurationHolder.config.grails.serverURL}/user/confirm?api=${userInstance.apiKey}"
-            try {
-                mailService.sendMail {
-                    to sendTo
-                    from "sean535@gmail.com"
-                    subject "Welcome To The Profiler Application"
-                    body message
-                }
-            }
-            catch (javax.mail.AuthenticationFailedException e)
-            {
-                render(view: "error")
-            }
+            //try {
+             //   emailerService.sendMail {
+             //       to sendTo
+             //       from "sean535@gmail.com"
+             //       subject "Welcome To The Profiler Application"
+             //       body message
+             //   }
+            //}
+            //catch (javax.mail.AuthenticationFailedException e)
+            //{
+            //    render(view: "error")
+            //}
             flash.message = "Registration Complete, Check Inbox for confirmation email"
             redirect(action: "show", id: userInstance.id)
         }
